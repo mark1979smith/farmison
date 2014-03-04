@@ -25,126 +25,126 @@ class FM_Model_Api_Maxmind
      * IP Address of the end user - $_SERVER['HTTP_HOST']
      * @var string
      */
-    protected $ipAddress = NULL;
+    protected $_ipAddress = NULL;
 
     /**
      * Billing City
      * @var string
      */
-    protected $billingCity = NULL;
+    protected $_billingCity = NULL;
 
     /**
      * Billing Region
      * Not used because we do not collect Counties
      * @var string
      */
-    protected $billingRegion = '';
+    protected $_billingRegion = '';
 
     /**
      * Billing Postal Code
      * @var string
      */
-    protected $billingPostalCode = NULL;
+    protected $_billingPostalCode = NULL;
 
     /**
      * Billing Country
      * Default value set to 'GB'
      * @var string
      */
-    protected $billingCountry = 'GB';
+    protected $_billingCountry = 'GB';
 
     /**
      * Shipping Address
      * @var string
      */
-    protected $shippingAddress = NULL;
+    protected $_shippingAddress = NULL;
 
     /**
      * Shipping Town / City
      * @var string
      */
-    protected $shippingCity = NULL;
+    protected $_shippingCity = NULL;
 
     /**
      * Shipping Postal Code
      * @var string
      */
-    protected $shippingPostalCode = NULL;
+    protected $_shippingPostalCode = NULL;
 
     /**
      * Shipping Country
      * Default set to 'GB'
      * @var string
      */
-    protected $shippingCountry = 'GB';
+    protected $_shippingCountry = 'GB';
 
     /**
      * Email Domain
      * @var string
      */
-    protected $emailDomain = NULL;
+    protected $_emailDomain = NULL;
 
     /**
      * Customer Landline Telephone Number
      * @var string
      */
-    protected $customerTelephone = NULL;
+    protected $_customerTelephone = NULL;
 
     /**
      * An MD5 hash of email address
      * @var string
      */
-    protected $emailMD5 = NULL;
+    protected $_emailMD5 = NULL;
 
     /**
      * The BIN number
      * The first 6 digits of the credit card number if paid by credit card
      * @var string
      */
-    protected $binNumber = NULL;
+    protected $_binNumber = NULL;
 
     /**
      * Session ID - session_id()
      * @var string
      */
-    protected $sessionId = NULL;
+    protected $_sessionId = NULL;
 
     /**
      * Browser User-Agent
      * @var string
      */
-    protected $userAgent = NULL;
+    protected $_userAgent = NULL;
 
     /**
      * Browser Accept-Language
      * @var string
      */
-    protected $acceptLanguage = NULL;
+    protected $_acceptLanguage = NULL;
 
     /**
      * Txn Id - The order number
      * @var string
      */
-    protected $txnId = NULL;
+    protected $_txnId = NULL;
 
     /**
      * Order Total
      * @var float
      */
-    protected $orderAmount = NULL;
+    protected $_orderAmount = NULL;
 
     /**
      * Order Currency
      * @var string
      */
-    protected $orderCurrency = NULL;
+    protected $_orderCurrency = NULL;
 
     /**
      * Transaction Type
      * Can be one of the following: creditcard, debitcard, paypal
      * @var string
      */
-    protected $txnType = NULL;
+    protected $_txnType = NULL;
 
     /**
      * CVN result
@@ -153,13 +153,13 @@ class FM_Model_Api_Maxmind
      * @see https://resourcecentre.realexpayments.com/documents/pdf.html?id=137
      * @var string
      */
-    protected $cvvResult = NULL;
+    protected $_cvvResult = NULL;
 
     /**
      * Forwarded IP - $_SERVER["HTTP_X_FORWARDED_FOR"]
      * @var unknown
      */
-    protected $forwardedIP = NULL;
+    protected $_forwardedIP = NULL;
 
     /**
      * Magic Setter/Getter methods
@@ -181,7 +181,7 @@ class FM_Model_Api_Maxmind
     	 */
     	if (preg_match('/^set/i', $name))
     	{
-        	$var = lcfirst(preg_replace('/^set/i', '', $name));
+        	$var = '_' . lcfirst(preg_replace('/^set/i', '', $name));
         	$this->{$var} = $attr[0];
 
         	return $this;
@@ -191,7 +191,7 @@ class FM_Model_Api_Maxmind
     	 */
     	elseif (preg_match('/^get/i', $name))
     	{
-        	$var = lcfirst(preg_replace('/^get/i', '', $name));
+        	$var = '_' . lcfirst(preg_replace('/^get/i', '', $name));
         	return $this->{$var};
     	}
 
